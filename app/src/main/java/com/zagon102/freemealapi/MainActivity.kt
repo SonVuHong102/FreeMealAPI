@@ -2,19 +2,14 @@ package com.zagon102.freemealapi
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.zagon102.freemealapi.databinding.ActivityMainBinding
-import com.zagon102.freemealapi.meal.MealViewModel
-import com.zagon102.freemealapi.network.Api
-import kotlinx.coroutines.*
+import com.zagon102.freemealapi.viewmodel.MealViewModel
 
 class MainActivity : AppCompatActivity() {
     private var _binding: ActivityMainBinding? = null
@@ -32,30 +27,19 @@ class MainActivity : AppCompatActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        val toolbar = binding.toolbar
-//        setSupportActionBar(toolbar)
-//
-//
-//        val navHostFragment = supportFragmentManager.findFragmentById(R.id.my_nav_host_fragment) as NavHostFragment
-//        navController = navHostFragment.navController
-//
-//        val drawerLayout = binding.drawerLayout
-//        appBarConfiguration = AppBarConfiguration(setOf(R.id.meal_dest),drawerLayout)
-//        setupActionBarWithNavController(navController,appBarConfiguration)
-            test()
+        val toolbar = binding.toolbar
+        setSupportActionBar(toolbar)
+
+
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.my_nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController
+
+        val drawerLayout = binding.drawerLayout
+        appBarConfiguration = AppBarConfiguration(setOf(R.id.meal_dest),drawerLayout)
+        setupActionBarWithNavController(navController,appBarConfiguration)
     }
 
-//    override fun onSupportNavigateUp(): Boolean {
-//        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
-//    }
-     fun test() {
-        lifecycleScope.launch {
-            makeToast(Api.retrofitService.get())
-        }
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
-    fun makeToast(testStr: String) {
-
-        Toast.makeText(this,testStr,Toast.LENGTH_SHORT).show()
-    }
-
 }

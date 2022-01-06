@@ -1,20 +1,13 @@
-package com.zagon102.freemealapi.meal
+package com.zagon102.freemealapi.ui.meal
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
-import com.zagon102.freemealapi.R
 import com.zagon102.freemealapi.databinding.FragmentMainMealBinding
-import com.zagon102.freemealapi.network.Api
-import com.zagon102.freemealapi.network.Meal
-import com.zagon102.freemealapi.network.Meals
-import kotlinx.coroutines.*
+import com.zagon102.freemealapi.viewmodel.MealViewModel
 
 class MainMealFragment : Fragment() {
 
@@ -38,18 +31,4 @@ class MainMealFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-//        test()
-    }
-
-    fun test() {
-        lifecycleScope.launch {
-            testStr = Api.retrofitService.get()
-            Log.e("test",testStr)
-            binding.textView.text = testStr
-
-        }
-
-    }
 }
