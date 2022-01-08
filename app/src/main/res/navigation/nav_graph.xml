@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/meal_dest"
-        android:name="com.zagon102.freemealapi.meal.MainMealFragment"
+        android:name="com.zagon102.freemealapi.ui.meal.MainMealFragment"
         android:label="Meal"
         tools:layout="@layout/fragment_main_meal" />
 </navigation>
