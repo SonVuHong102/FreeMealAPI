@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import com.zagon102.freemealapi.databinding.FragmentMainMealBinding
 import com.zagon102.freemealapi.viewmodel.MealViewModel
 
@@ -14,16 +14,13 @@ class MainMealFragment : Fragment() {
     private var _binding: FragmentMainMealBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: MealViewModel by viewModels()
+    private val viewModel: MealViewModel by activityViewModels()
 
-    var testStr = "aaaaa"
-    val getTestSt get() = testStr
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         _binding = FragmentMainMealBinding.inflate(inflater)
 //        binding.lifecycleOwner = this
 //        binding.mainMealFragment = this
