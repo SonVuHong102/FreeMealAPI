@@ -32,11 +32,11 @@ interface ApiService {
     @GET("categories.php")
     suspend fun getMealCategories() : Categories?
     @GET("list.php?c=list")
-    suspend fun getAllCategories() : Meals?
+    suspend fun getAllCategories() : Meals
     @GET("list.php?a=list")
-    suspend fun getAllArea() : Meals?
+    suspend fun getAllArea() : Meals
     @GET("list.php?i=list")
-    suspend fun getAllIngredients() : Meals?
+    suspend fun getAllIngredients() : Meals
     @GET("filter.php")
     suspend fun filterByCategory(@Query ("c") category: String) : Meals?
     @GET("filter.php")
