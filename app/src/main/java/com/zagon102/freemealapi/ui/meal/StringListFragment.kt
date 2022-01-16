@@ -5,14 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 import com.zagon102.freemealapi.databinding.FragmentListViewBinding
+import com.zagon102.freemealapi.viewmodel.MealViewModel
 
 
-class ListViewFragment : Fragment() {
+class StringListFragment : Fragment() {
     private var _binding: FragmentListViewBinding? = null
     private val binding get() = _binding!!
-    private val args: ListViewFragmentArgs by navArgs()
+
+    private val viewModel: MealViewModel by activityViewModels()
+
+    private val args: StringListFragmentArgs by navArgs()
     private lateinit var type: String
 
     override fun onCreateView(
@@ -26,7 +32,7 @@ class ListViewFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         type = args.type
-
+        val list = viewModel.getList(type)
     }
 
 }

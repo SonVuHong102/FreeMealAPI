@@ -12,12 +12,5 @@
     <string name="search_by_category">Search by Category</string>
     <string name="search_by_area">Search by Area</string>
     <string name="search_by_ingredient">Search by Ingredient</string>
-    <string name = "type_key">TYPE_KEY</string>
-    <string name = "meal_key">MEAL_KEY</string>
-    <string name = "area_key">AREA_KEY</string>
-    <string name = "ingredient_key">INGREDIENT_KEY</string>
-    <string name= "area_label">Area</string>
-    <string name= "category_label">Category</string>
-    <string name= "ingredient_label">Ingredient</string>
     <string name="list_view_fragment_label">{label}</string>
 </resources>

@@ -9,6 +9,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.zagon102.freemealapi.R
+import com.zagon102.freemealapi.constant.Constant
 import com.zagon102.freemealapi.databinding.FragmentMainMealBinding
 import com.zagon102.freemealapi.viewmodel.MealViewModel
 
@@ -26,7 +27,7 @@ class MainMealFragment : Fragment() {
     ): View? {
         _binding = FragmentMainMealBinding.inflate(inflater)
         binding.searchAreaBtn.setOnClickListener{
-            val action = MainMealFragmentDirections.actionMealDestToListViewFragment(getString(R.string.area_key),getString(R.string.area_label))
+            val action = MainMealFragmentDirections.actionMealDestToListViewFragment(Constant.AREA_KEY,Constant.AREA_LABEL)
             findNavController().navigate(action)
         }
 
