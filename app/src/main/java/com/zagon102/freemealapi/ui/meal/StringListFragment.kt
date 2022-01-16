@@ -5,11 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.coroutineScope
 import androidx.navigation.fragment.navArgs
 import com.zagon102.freemealapi.databinding.FragmentListViewBinding
 import com.zagon102.freemealapi.viewmodel.MealViewModel
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 
 class StringListFragment : Fragment() {
@@ -31,8 +33,18 @@ class StringListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        type = args.type
-        val list = viewModel.getList(type)
+        initiateRecyclerView()
     }
 
+    private fun initiateRecyclerView() {
+        type = args.type
+        viewModel.getList(type)
+        val adapter = StringListAdapter()
+        binding.listView.adapter = adapter
+        lifecycle.coroutineScope.launch {
+            viewModel.listString.collect() {
+                adapter.submitList(it)
+            }
+        }
+    }
 }

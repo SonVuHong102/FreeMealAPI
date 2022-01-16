@@ -11,9 +11,9 @@ import kotlinx.coroutines.launch
 class MealViewModel : ViewModel() {
 
     private val _listMeal = MutableStateFlow<Meals?>(Meals(listOf()))
-    val listMeal: Flow<Meals?> = _listMeal
+    val listMeal: StateFlow<Meals?> = _listMeal
     private val _listString = MutableStateFlow<List<String>?>(listOf())
-    val listString: Flow<List<String>?> = _listString
+    val listString: StateFlow<List<String>?> = _listString
 
 
     fun getList(type: String) {
