@@ -38,12 +38,22 @@
             android:name="label"
             app:argType="string" />
         <action
-            android:id="@+id/action_list_view_dest_to_previewStringFragment"
-            app:destination="@id/previewStringFragment" />
+            android:id="@+id/action_string_list_dest_to_preview_item_dest"
+            app:destination="@id/preview_item_dest" />
     </fragment>
     <fragment
-        android:id="@+id/previewStringFragment"
-        android:name="com.zagon102.freemealapi.ui.meal.PreviewStringFragment"
-        android:label="fragment_preview_string"
-        tools:layout="@layout/fragment_preview_item" />
+        android:id="@+id/preview_item_dest"
+        android:name="com.zagon102.freemealapi.ui.meal.PreviewItemFragment"
+        android:label="@string/preview_item_fragment_label"
+        tools:layout="@layout/fragment_preview_item" >
+        <argument
+            android:name="type"
+            app:argType="string" />
+        <argument
+            android:name="value"
+            app:argType="string" />
+        <argument
+            android:name="label"
+            app:argType="string" />
+    </fragment>
 </navigation>

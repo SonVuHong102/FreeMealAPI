@@ -9,7 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.coroutineScope
 import androidx.navigation.fragment.navArgs
 import com.zagon102.freemealapi.databinding.FragmentListViewBinding
-import com.zagon102.freemealapi.viewmodel.MealViewModel
+import com.zagon102.freemealapi.viewmodel.ListViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -18,7 +18,7 @@ class StringListFragment : Fragment() {
     private var _binding: FragmentListViewBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: MealViewModel by activityViewModels()
+    private val viewModel: ListViewModel by activityViewModels()
 
     private val args: StringListFragmentArgs by navArgs()
     private lateinit var type: String
@@ -39,12 +39,17 @@ class StringListFragment : Fragment() {
     private fun initiateRecyclerView() {
         type = args.type
         viewModel.getList(type)
-        val adapter = StringListAdapter()
+        val adapter = StringListAdapter(viewModel.getNavDirection)
         binding.listView.adapter = adapter
         lifecycle.coroutineScope.launch {
             viewModel.listString.collect() {
                 adapter.submitList(it)
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
