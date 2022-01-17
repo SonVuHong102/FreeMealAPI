@@ -12,6 +12,5 @@
     <string name="search_by_category">Search by Category</string>
     <string name="search_by_area">Search by Area</string>
     <string name="search_by_ingredient">Search by Ingredient</string>
-    <string name="list_view_fragment_label">{label}</string>
-    <string name="preview_item_fragment_label">{label}</string>
+    <string name="fragment_label_by_args">{label}</string>
 </resources>

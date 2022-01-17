@@ -12,9 +12,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.zagon102.freemealapi.R
 import com.zagon102.freemealapi.databinding.FragmentListViewBinding
 import com.zagon102.freemealapi.databinding.TextItemViewBinding
+import com.zagon102.freemealapi.model.PreviewItem
 
 
-class StringListAdapter(private val getNavDirections: (String) -> (NavDirections)) : ListAdapter<String,StringListAdapter.ViewHolder>(DiffCallBack) {
+class StringListAdapter(
+    private val getNavDirections: (String) -> (NavDirections),
+    private val navigateByAction: (NavDirections) -> Unit
+) : ListAdapter<String,StringListAdapter.ViewHolder>(DiffCallBack) {
     companion object DiffCallBack : DiffUtil.ItemCallback<String>() {
         override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
             return oldItem == newItem
@@ -35,7 +39,7 @@ class StringListAdapter(private val getNavDirections: (String) -> (NavDirections
         val viewHolder = ViewHolder(TextItemViewBinding.inflate(LayoutInflater.from(parent.context)))
         viewHolder.itemView.setOnClickListener {
             val position = viewHolder.adapterPosition
-            parent.findNavController().navigate(getNavDirections(getItem(position)))
+            navigateByAction(getNavDirections(getItem(position) as String))
         }
         return viewHolder
     }

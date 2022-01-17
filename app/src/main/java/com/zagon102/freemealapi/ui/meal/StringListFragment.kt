@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.coroutineScope
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.zagon102.freemealapi.databinding.FragmentListViewBinding
 import com.zagon102.freemealapi.viewmodel.ListViewModel
@@ -39,13 +41,17 @@ class StringListFragment : Fragment() {
     private fun initiateRecyclerView() {
         type = args.type
         viewModel.getList(type)
-        val adapter = StringListAdapter(viewModel.getNavDirection)
+        val adapter = StringListAdapter(viewModel.getNavDirection,navigateByAction)
         binding.listView.adapter = adapter
         lifecycle.coroutineScope.launch {
             viewModel.listString.collect() {
                 adapter.submitList(it)
             }
         }
+    }
+
+    private val navigateByAction: (NavDirections) -> Unit = {
+        findNavController().navigate(it)
     }
 
     override fun onDestroy() {

@@ -30,6 +30,10 @@ class MainMealFragment : Fragment() {
             val action = MainMealFragmentDirections.actionMealDestToListViewFragment(Constant.CATEGORY_KEY,Constant.CATEGORY_LABEL)
             findNavController().navigate(action)
         }
+        binding.searchIngredientBtn.setOnClickListener{
+            val action = MainMealFragmentDirections.actionMealDestToListViewFragment(Constant.INGREDIENT_KEY,Constant.INGREDIENT_LABEL)
+            findNavController().navigate(action)
+        }
         return binding.root
     }
 }

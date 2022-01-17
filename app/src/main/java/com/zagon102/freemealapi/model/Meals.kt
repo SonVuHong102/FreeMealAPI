@@ -5,15 +5,15 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class Meals (
     @Json(name = "meals")
-    val meals: List<Meal>
+    val meals: List<Meal>?
 )
 
 @JsonClass(generateAdapter = true)
 data class Meal(
     @Json(name = "idMeal")
-    val idMeal: String?,
+    val idMeal: String,
     @Json(name = "strMeal")
-    val strMeal: String?,
+    val strMeal: String,
     @Json(name = "strDrinkAlternate")
     val strDrinkAlternate: String?,
     @Json(name = "strCategory")

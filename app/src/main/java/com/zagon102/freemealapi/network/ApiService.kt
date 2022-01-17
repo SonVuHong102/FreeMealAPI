@@ -2,8 +2,7 @@ package com.zagon102.freemealapi.network
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import com.zagon102.freemealapi.model.Categories
-import com.zagon102.freemealapi.model.Meals
+import com.zagon102.freemealapi.model.*
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
@@ -22,25 +21,25 @@ private val retrofit = Retrofit.Builder()
 
 interface ApiService {
     @GET("search.php")
-    suspend fun getAllMealByFirstLetter(@Query ("f") letter: String) : Meals?
+    suspend fun getAllMealByFirstLetter(@Query ("f") letter: String) : Meals
     @GET("search.php")
-    suspend fun getMealByName(@Query ("s") name: String) : Meals?
+    suspend fun getMealByName(@Query ("s") name: String) : Meals
     @GET("lookup.php")
-    suspend fun getMealDetail(@Query ("i") id: String) : Meals?
+    suspend fun getMealDetail(@Query ("i") id: Int) : Meals
     @GET("random.php")
-    suspend fun getRandomMeal() : Meals?
+    suspend fun getRandomMeal() : Meals
     @GET("categories.php")
-    suspend fun getMealCategories() : Categories?
+    suspend fun getMealCategories() : MealCategory
     @GET("list.php?c=list")
-    suspend fun getAllCategories() : Meals
+    suspend fun getAllCategories() : Categories
     @GET("list.php?a=list")
-    suspend fun getAllArea() : Meals
+    suspend fun getAllArea() : Areas
     @GET("list.php?i=list")
-    suspend fun getAllIngredients() : Meals
+    suspend fun getAllIngredients() : Ingredients
     @GET("filter.php")
-    suspend fun filterByCategory(@Query ("c") category: String) : Meals?
+    suspend fun filterByCategory(@Query ("c") category: String) : Meals
     @GET("filter.php")
-    suspend fun filterByArea(@Query ("a") area: String) : Meals?
+    suspend fun filterByArea(@Query ("a") area: String) : Meals
 }
 
 object Api {

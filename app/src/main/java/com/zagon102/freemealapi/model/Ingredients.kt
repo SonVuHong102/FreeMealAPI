@@ -6,7 +6,7 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class Ingredients(
     @Json(name = "meals")
-    val ingredients: List<Ingredient>? = null
+    val meals: List<Ingredient>
 )
 
 
