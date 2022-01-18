@@ -11,6 +11,7 @@ import androidx.lifecycle.coroutineScope
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import coil.load
+import com.zagon102.freemealapi.constant.Constant
 import com.zagon102.freemealapi.databinding.FragmentDetailItemBinding
 import com.zagon102.freemealapi.network.ApiRepository
 import com.zagon102.freemealapi.viewmodel.MealViewModel
@@ -38,10 +39,6 @@ class DetailItemFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        lifecycle.coroutineScope.launch{
-//            val list = ApiRepository.getMealDetail(52967)
-//            Log.e("TESTTT", list.meals?.size.toString() + list.meals!!.get(0).strMeal)
-//        }
         viewModel.getMeal(args.id)
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.currentMeal.collect() {
@@ -55,6 +52,9 @@ class DetailItemFragment : Fragment() {
                     binding.detailItemLabel.text = meal.strMeal
                 }
             }
+        }
+        binding.detailItemRandom.setOnClickListener{
+            viewModel.getMeal(Constant.RANDOM_KEY)
         }
     }
     override fun onDestroy() {

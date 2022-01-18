@@ -14,6 +14,8 @@
         android:fontFamily="cursive"
         android:textAlignment="center"
         android:textSize="@dimen/label_size"
+        android:layout_margin="@dimen/view_margin"
+        android:padding="@dimen/view_padding"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -27,45 +29,37 @@
         android:padding="@dimen/view_padding"
         app:layout_constraintTop_toBottomOf="@+id/detail_item_label"
         app:layout_constraintBottom_toTopOf="@+id/detail_item_random">
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/random_meal"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <ImageView
+                android:id="@+id/detail_item_img"
+                android:layout_width="@dimen/preview_width"
+                android:layout_height="@dimen/preview_height"
+                android:layout_margin="@dimen/view_margin"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/detail_item_title"
+                style="?attr/textAppearanceHeadline5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_margin="@dimen/view_margin"
+                android:textStyle="italic"
+                tools:text="Example Title" />
 
-                <ImageView
-                    android:id="@+id/detail_item_img"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/image_height"
-
-                    android:layout_margin="@dimen/view_margin"
-                    android:scaleType="centerCrop"
-                    tools:src="@drawable/meal_background" />
-
-                <TextView
-                    android:id="@+id/detail_item_title"
-                    style="?attr/textAppearanceHeadline5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/view_margin"
-                    android:textStyle="italic"
-                    tools:text="Example Title" />
-
-                <TextView
-                    android:id="@+id/detail_item_description"
-                    style="?attr/textAppearanceBody2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/view_margin"
-                    android:textSize="@dimen/description_size"
-                    tools:text="Example Description" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:id="@+id/detail_item_description"
+                style="?attr/textAppearanceBody2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/view_margin"
+                android:textSize="@dimen/description_size"
+                tools:text="Example Description" />
+        </LinearLayout>
     </ScrollView>
 
     <Button

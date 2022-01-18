@@ -14,25 +14,27 @@ class MainMealFragment : Fragment() {
     private var _binding: FragmentMainMealBinding? = null
     private val binding get() = _binding!!
 
-//    private val viewModel: MealViewModel by activityViewModels()
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentMainMealBinding.inflate(inflater)
+        val navController = findNavController()
         binding.searchAreaBtn.setOnClickListener{
             val action = MainMealFragmentDirections.actionMealDestToListViewFragment(Constant.AREA_KEY,Constant.AREA_LABEL)
-            findNavController().navigate(action)
+            navController.navigate(action)
         }
         binding.searchCategoryBtn.setOnClickListener{
             val action = MainMealFragmentDirections.actionMealDestToListViewFragment(Constant.CATEGORY_KEY,Constant.CATEGORY_LABEL)
-            findNavController().navigate(action)
+            navController.navigate(action)
         }
         binding.searchIngredientBtn.setOnClickListener{
             val action = MainMealFragmentDirections.actionMealDestToListViewFragment(Constant.INGREDIENT_KEY,Constant.INGREDIENT_LABEL)
-            findNavController().navigate(action)
+            navController.navigate(action)
+        }
+        binding.randomMealBtn.setOnClickListener{
+            val action = MainMealFragmentDirections.actionMealDestToDetailItemFragment(Constant.RANDOM_KEY,Constant.RANDOM_LABEL)
+            navController.navigate(action)
         }
         return binding.root
     }

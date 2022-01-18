@@ -50,7 +50,7 @@
         android:drawableLeft="@drawable/ic_baseline_eco_24"
         android:text="@string/search_by_ingredient"/>
     <Button
-        android:id="@+id/random_meal_dest"
+        android:id="@+id/random_meal_btn"
         android:layout_width="@dimen/button_width"
         android:layout_height="@dimen/button_height"
         android:layout_gravity="center"

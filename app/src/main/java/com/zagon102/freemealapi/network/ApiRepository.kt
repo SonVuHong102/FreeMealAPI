@@ -33,4 +33,7 @@ object ApiRepository {
      suspend fun filterByArea(area: String) : Meals {
          return Api.retrofitService.filterByArea(area)
      }
+    suspend fun filterByIngredient(ingredient: String) : Meals {
+        return Api.retrofitService.filterByIngredient(ingredient)
+    }
 }

@@ -40,6 +40,8 @@ interface ApiService {
     suspend fun filterByCategory(@Query ("c") category: String) : Meals
     @GET("filter.php")
     suspend fun filterByArea(@Query ("a") area: String) : Meals
+    @GET("filter.php")
+    suspend fun filterByIngredient(@Query ("i") ingredient: String) : Meals
 }
 
 object Api {

@@ -33,6 +33,9 @@ class ItemViewModel : ViewModel() {
                 Constant.MEAL_KEY -> filterByMeal(value)
 
             }
+            getNavDirection = {id: String,label:String ->
+                PreviewItemFragmentDirections.actionPreviewItemDestToDetailItemFragment(id,label)
+            }
             prevListKey = type
             prevValue = value
         } catch(e: Exception) {
@@ -43,29 +46,36 @@ class ItemViewModel : ViewModel() {
     private fun filterByArea(value: String) {
         viewModelScope.launch {
             val listMeal = ApiRepository.filterByArea(value)
-            listMeal.meals?.apply {
-                val list = mutableListOf<PreviewItem>()
-                for(i in this) {
-                    i?.apply {
-                        list.add(PreviewItem(i.idMeal,i.strMealThumb?:"",i.strMeal,""))
-                    }
-
-                }
-                _listPreviewItem.value= list
-            }
-        }
-        getNavDirection = {id: String,label:String ->
-            PreviewItemFragmentDirections.actionPreviewItemDestToDetailItemFragment(id,label)
+            getListPreviewItem(listMeal)
         }
     }
     private fun filterByIngredient(value: String) {
-
+        viewModelScope.launch {
+            val listMeal = ApiRepository.filterByIngredient(value)
+            getListPreviewItem(listMeal)
+        }
     }
     private fun filterByCategory(value: String) {
-
+        viewModelScope.launch {
+            val listMeal = ApiRepository.filterByCategory(value)
+            getListPreviewItem(listMeal)
+        }
     }
 
     private fun filterByMeal(value: String) {
 
+    }
+
+    private fun getListPreviewItem(listMeal : Meals) {
+        listMeal.meals?.apply {
+            val list = mutableListOf<PreviewItem>()
+            for(i in this) {
+                i.apply {
+                    list.add(PreviewItem(i.idMeal,i.strMealThumb?:"",i.strMeal,""))
+                }
+
+            }
+            _listPreviewItem.value= list
+        }
     }
 }

@@ -31,7 +31,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="top"
             android:padding="@dimen/view_padding"
-            tools:text="Example title"
+            tools:text="Example description"
             android:textSize="@dimen/preview_text_size"
             android:textStyle="italic"/>
     </LinearLayout>
