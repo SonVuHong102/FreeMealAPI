@@ -12,27 +12,51 @@
         tools:layout="@layout/fragment_main_meal" >
         <action
             android:id="@+id/action_meal_dest_to_listViewFragment"
-            app:destination="@id/list_view_dest" />
+            app:destination="@id/string_list_dest" />
         <action
-            android:id="@+id/action_meal_dest_to_randomMealFragment"
-            app:destination="@id/random_meal_dest" />
+            android:id="@+id/action_meal_dest_to_detailItemFragment"
+            app:destination="@id/detail_item_dest" />
     </fragment>
     <fragment
-        android:id="@+id/random_meal_dest"
-        android:name="com.zagon102.freemealapi.ui.meal.RandomMealFragment"
-        android:label="fragment_random_meal"
-        tools:layout="@layout/fragment_random_meal" >
-        <argument
-            android:name="id"
-            app:argType="integer" />
-    </fragment>
-    <fragment
-        android:id="@+id/list_view_dest"
-        android:name="com.zagon102.freemealapi.ui.meal.ListViewFragment"
-        android:label="@string/list_view_fragment_label"
+        android:id="@+id/string_list_dest"
+        android:name="com.zagon102.freemealapi.ui.meal.StringListFragment"
+        android:label="@string/fragment_label_by_args"
         tools:layout="@layout/fragment_list_view" >
         <argument
             android:name="type"
+            app:argType="string" />
+        <argument
+            android:name="label"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_string_list_dest_to_preview_item_dest"
+            app:destination="@id/preview_item_dest" />
+    </fragment>
+    <fragment
+        android:id="@+id/preview_item_dest"
+        android:name="com.zagon102.freemealapi.ui.meal.PreviewItemFragment"
+        android:label="@string/fragment_label_by_args"
+        tools:layout="@layout/fragment_list_view" >
+        <argument
+            android:name="type"
+            app:argType="string" />
+        <argument
+            android:name="value"
+            app:argType="string" />
+        <argument
+            android:name="label"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_preview_item_dest_to_detailItemFragment"
+            app:destination="@id/detail_item_dest" />
+    </fragment>
+    <fragment
+        android:id="@+id/detail_item_dest"
+        android:name="com.zagon102.freemealapi.ui.meal.DetailItemFragment"
+        android:label="@string/fragment_label_by_args"
+        tools:layout="@layout/fragment_detail_item" >
+        <argument
+            android:name="id"
             app:argType="string" />
         <argument
             android:name="label"
